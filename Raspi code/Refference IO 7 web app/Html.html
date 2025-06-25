@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UR Robot I/O Bediening</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #eef2f5;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 35px 45px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        .buttons button {
+            background-color: #5dade2; /* Lichtere blauw voor I/O */
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            margin: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 17px;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            min-width: 200px; /* Iets breder voor de tekst */
+        }
+        .buttons button:hover {
+            background-color: #3498db;
+        }
+        .buttons button:active {
+            transform: scale(0.98);
+        }
+        .buttons button#btn_do_off {
+            background-color: #f1948a; /* Lichtere rood */
+        }
+        .buttons button#btn_do_off:hover {
+            background-color: #e74c3c;
+        }
+        .info-area {
+            margin-top: 30px;
+            padding: 18px;
+            border: 1px solid #d1d8de;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .info-area p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 15px;
+        }
+        .info-area p#statusText.error {
+            color: #c0392b;
+            font-weight: bold;
+        }
+        .info-area p#statusText.success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UR Robot Digital Output 7</h1>
+        <div class="buttons">
+            <button id="btn_do_on" data-action="set_do_on">Digital Out 7 AAN</button>
+            <button id="btn_do_off" data-action="set_do_off">Digital Out 7 UIT</button>
+        </div>
+        <div class="info-area">
+            <p id="statusText">Status: Wacht op actie...</p>
+            </div>
+    </div>
+
+    <script>
+        const btnDoOn = document.getElementById('btn_do_on');
+        const btnDoOff = document.getElementById('btn_do_off');
+        const statusText = document.getElementById('statusText');
+        // const currentPoseText = document.getElementById('currentPoseText'); // Indien nog gebruikt
+
+        async function sendRobotIOCommand(action) {
+            statusText.textContent = `Bezig met uitvoeren: ${action}...`;
+            statusText.className = ''; // Reset class
+
+            try {
+                const response = await fetch(`/api/robot_command`, { // Endpoint blijft hetzelfde
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: action }),
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    statusText.textContent = `Fout: ${data.message || response.statusText}`;
+                    statusText.className = 'error';
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${data.message}`);
+                }
+
+                statusText.textContent = `Status: ${data.message || 'Actie succesvol!'}`;
+                statusText.className = 'success';
+                console.log('Server respons:', data);
+
+            } catch (error) {
+                console.error('Fout bij het versturen van I/O commando:', error);
+                if (!statusText.classList.contains('error')) {
+                    statusText.textContent = `Fout: Kon I/O commando niet uitvoeren. (${error.message})`;
+                    statusText.className = 'error';
+                }
+            }
+        }
+
+        btnDoOn.addEventListener('click', () => {
+            sendRobotIOCommand(btnDoOn.dataset.action);
+        });
+
+        btnDoOff.addEventListener('click', () => {
+            sendRobotIOCommand(btnDoOff.dataset.action);
+        });
+    </script>
+</body>
+</html>

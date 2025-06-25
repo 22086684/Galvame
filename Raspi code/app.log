@@ -1,0 +1,688 @@
+2025-06-04 15:39:23,202 - root - INFO - Applicatie gestart en logging geconfigureerd.
+2025-06-04 15:39:23,213 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-04 15:39:23,213 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-04 15:39:24,813 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-04 15:39:24,814 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:24] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-04 15:39:24,836 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:24] "GET /login HTTP/1.1" 200 -
+2025-06-04 15:39:29,783 - root - INFO - Gebruiker succesvol ingelogd.
+2025-06-04 15:39:29,784 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-04 15:39:29,802 - WebTest - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 80, in serve_index_page
+    return render_template('index.html')
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-06-04 15:39:29,805 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:29] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-06-04 15:39:40,409 - root - INFO - Applicatie gestart en logging geconfigureerd.
+2025-06-04 15:39:40,419 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-04 15:39:40,420 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-04 15:39:43,882 - root - INFO - Applicatie gestart en logging geconfigureerd.
+2025-06-04 15:39:43,892 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-04 15:39:43,892 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-04 15:39:52,321 - root - INFO - Applicatie gestart en logging geconfigureerd.
+2025-06-04 15:39:52,332 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-04 15:39:52,332 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-04 15:39:53,622 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-04 15:39:53,623 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:53] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-04 15:39:53,657 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:53] "GET /login HTTP/1.1" 200 -
+2025-06-04 15:39:59,510 - root - INFO - Gebruiker succesvol ingelogd.
+2025-06-04 15:39:59,512 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-04 15:39:59,546 - WebTest - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 80, in serve_index_page
+    return render_template('index.html')
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-06-04 15:39:59,549 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:39:59] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-06-05 14:39:40,424 - root - INFO - Applicatie gestart en logging geconfigureerd.
+2025-06-05 14:39:40,436 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-05 14:39:40,436 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 14:39:41,900 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 14:39:41,911 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:39:41] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-05 14:39:41,989 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:39:41] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:39:47,061 - root - INFO - Gebruiker succesvol ingelogd.
+2025-06-05 14:39:47,062 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:39:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-05 14:39:47,175 - WebTest - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 80, in serve_index_page
+    return render_template('index.html')
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-06-05 14:39:47,178 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:39:47] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-06-05 14:40:03,532 - WebTest - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 80, in serve_index_page
+    return render_template('index.html')
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-06-05 14:40:03,533 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:40:03] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-06-05 14:40:06,002 - WebTest - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 80, in serve_index_page
+    return render_template('index.html')
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-06-05 14:40:06,003 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:40:06] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-06-05 14:42:20,671 - root - INFO - Applicatie gestart, algemene logging naar app.log
+2025-06-05 14:42:20,675 - root - INFO - Starten van Flask server op host 0.0.0.0, port 5000. ROBOT_IP is 192.168.0.43
+2025-06-05 14:42:20,679 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-05 14:42:20,680 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 14:42:30,988 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 14:42:30,989 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:42:30] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-05 14:42:31,017 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:42:31] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:42:34,595 - root - WARNING - Mislukte loginpoging.
+2025-06-05 14:42:34,596 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:42:34] "POST /login HTTP/1.1" 200 -
+2025-06-05 14:42:39,303 - root - WARNING - Mislukte loginpoging.
+2025-06-05 14:42:39,304 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:42:39] "POST /login HTTP/1.1" 200 -
+2025-06-05 14:42:46,944 - root - WARNING - Mislukte loginpoging.
+2025-06-05 14:42:46,944 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:42:46] "POST /login HTTP/1.1" 200 -
+2025-06-05 14:43:12,490 - root - INFO - Applicatie gestart, algemene logging naar app.log
+2025-06-05 14:43:12,495 - root - INFO - Starten van Flask server op host 0.0.0.0, port 5000. ROBOT_IP is 192.168.0.43
+2025-06-05 14:43:12,499 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-05 14:43:12,499 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 14:43:19,659 - root - INFO - Gebruiker succesvol ingelogd.
+2025-06-05 14:43:19,660 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-05 14:43:19,687 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:19] "GET / HTTP/1.1" 200 -
+2025-06-05 14:43:21,723 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:21] "GET / HTTP/1.1" 200 -
+2025-06-05 14:43:27,722 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:27] "GET / HTTP/1.1" 200 -
+2025-06-05 14:43:30,489 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:30] "GET /logs HTTP/1.1" 200 -
+2025-06-05 14:43:37,901 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:37] "GET / HTTP/1.1" 200 -
+2025-06-05 14:43:39,516 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:39] "GET /logs HTTP/1.1" 200 -
+2025-06-05 14:43:40,523 - root - INFO - Gebruiker uitgelogd.
+2025-06-05 14:43:40,524 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:40] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-05 14:43:40,548 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:40] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:43:44,388 - root - INFO - Gebruiker succesvol ingelogd.
+2025-06-05 14:43:44,390 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:44] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-05 14:43:44,411 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:43:44] "GET / HTTP/1.1" 200 -
+2025-06-05 14:45:14,042 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:45:14] "GET /logs HTTP/1.1" 200 -
+2025-06-05 14:45:15,028 - root - INFO - Gebruiker uitgelogd.
+2025-06-05 14:45:15,029 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:45:15] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-05 14:45:15,047 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:45:15] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:46:17,229 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 14:46:17,229 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:46:17] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-05 14:46:17,253 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:46:17] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:46:17,396 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:46:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-05 14:46:26,037 - root - INFO - Gebruiker succesvol ingelogd.
+2025-06-05 14:46:26,038 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:46:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-05 14:46:26,051 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:46:26] "GET / HTTP/1.1" 200 -
+2025-06-05 14:46:29,713 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:46:29] "GET /logs HTTP/1.1" 200 -
+2025-06-05 14:47:55,008 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:47:55] "GET / HTTP/1.1" 200 -
+2025-06-05 14:47:57,450 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 14:47:57,450 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 14:48:00,510 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 14:48:00,512 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:48:00] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 14:48:04,736 - werkzeug - INFO - 10.109.22.111 - - [05/Jun/2025 14:48:04] "GET /logs HTTP/1.1" 200 -
+2025-06-05 14:48:19,972 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 14:48:19,972 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:48:19] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-05 14:48:20,009 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:48:20] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:52:29,066 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 14:52:29,067 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:52:29] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-05 14:52:29,090 - werkzeug - INFO - 10.109.22.130 - - [05/Jun/2025 14:52:29] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:55:51,345 - root - INFO - Applicatie gestart, algemene logging naar app.log
+2025-06-05 14:55:51,349 - root - INFO - Starten van Flask server op host 0.0.0.0, port 5000. ROBOT_IP is 192.168.0.43
+2025-06-05 14:55:51,353 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-05 14:55:51,353 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 14:55:58,031 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 14:55:58,032 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:55:58] "[32mGET /?id=eb723bf2-ae55-441a-8d5e-63adb1fefdb5&vscodeBrowserReqId=1749128157945 HTTP/1.1[0m" 302 -
+2025-06-05 14:55:58,174 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:55:58] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:57:03,775 - root - INFO - Applicatie gestart, algemene logging naar app.log
+2025-06-05 14:57:03,779 - root - INFO - Starten van Flask server op host 0.0.0.0, port 5000. ROBOT_IP is 192.168.0.43
+2025-06-05 14:57:03,783 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-05 14:57:03,783 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 14:57:14,582 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 14:57:14,583 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:57:14] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-05 14:57:14,620 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:57:14] "GET /login HTTP/1.1" 200 -
+2025-06-05 14:57:16,810 - root - WARNING - Mislukte loginpoging.
+2025-06-05 14:57:16,811 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 14:57:16] "POST /login HTTP/1.1" 200 -
+2025-06-05 15:24:21,777 - root - INFO - Applicatie gestart, algemene logging naar app.log
+2025-06-05 15:24:21,781 - root - INFO - Starten van Flask server op host 0.0.0.0, port 5000. ROBOT_IP is 192.168.0.43
+2025-06-05 15:24:21,785 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.109.22.47:5000
+2025-06-05 15:24:21,785 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 15:24:28,098 - root - INFO - Niet-geauthenticeerde toegang tot '/', doorsturen naar login.
+2025-06-05 15:24:28,099 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:28] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-05 15:24:28,128 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:28] "GET /login HTTP/1.1" 200 -
+2025-06-05 15:24:40,628 - root - WARNING - Mislukte loginpoging.
+2025-06-05 15:24:40,629 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:40] "POST /login HTTP/1.1" 200 -
+2025-06-05 15:24:50,106 - root - WARNING - Mislukte loginpoging.
+2025-06-05 15:24:50,106 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:50] "POST /login HTTP/1.1" 200 -
+2025-06-05 15:25:01,899 - root - WARNING - Mislukte loginpoging.
+2025-06-05 15:25:01,900 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:01] "POST /login HTTP/1.1" 200 -
+2025-06-05 15:25:11,073 - root - WARNING - Mislukte loginpoging.
+2025-06-05 15:25:11,074 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:11] "POST /login HTTP/1.1" 200 -
+2025-06-05 15:25:19,727 - root - WARNING - Mislukte loginpoging.
+2025-06-05 15:25:19,728 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:19] "POST /login HTTP/1.1" 200 -
+2025-06-05 15:25:31,541 - root - INFO - Gebruiker succesvol ingelogd.
+2025-06-05 15:25:31,542 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-05 15:25:31,646 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:31] "GET / HTTP/1.1" 200 -
+2025-06-05 15:25:34,863 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:34,863 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:37,918 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:37,920 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:37,931 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:37,926 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:37,928 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:37,930 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:37,930 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:37] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:25:37,922 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:40,990 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:40,990 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:40,991 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:40,991 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:40,992 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:40,993 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:40] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:25:44,063 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:47,135 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:47,136 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:50,206 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:53,282 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:53] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:25:53,278 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:53,280 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:53,281 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:53] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:25:53,280 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:53] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:25:53,283 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:53] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:25:56,350 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:56,353 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:56,356 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:25:56,358 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:25:56] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:25:56,358 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:56,358 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:25:59,422 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:25:59,424 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:26:02,500 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:26:02,496 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:26:02,498 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:02] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:26:02,499 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:26:05,570 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:26:05,567 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:26:05,568 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:05] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:26:05,569 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:26:02,496 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:26:08,638 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:26:08,640 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:26:08,641 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:08] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:26:08,642 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:26:08,642 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:26:08,643 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:08] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:26:08,643 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:26:11,710 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:26:14,782 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:26:14,784 - root - INFO - API commando ontvangen: move_z_plus
+2025-06-05 15:26:17,859 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:17] "GET /logs HTTP/1.1" 200 -
+2025-06-05 15:26:17,859 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:26:17,861 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:17] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:26:17,862 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:17] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:26:17,862 - root - INFO - Poging tot verbinden met robot (192.168.0.43) voor actie: move_z_plus
+2025-06-05 15:26:17,863 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:17] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -
+2025-06-05 15:26:20,926 - WebTest - ERROR - Exception on /api/robot_command [POST]
+Traceback (most recent call last):
+  File "/home/pi/Galvame/WebTest.py", line 93, in execute_robot_movement
+    rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+RuntimeError: Error: Could not connect to: 192.168.0.43 at 30004, verify the IP
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/.pyenv/versions/3.9.18/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pi/Galvame/WebTest.py", line 194, in robot_command_endpoint
+    result = execute_robot_movement(action)
+  File "/home/pi/Galvame/WebTest.py", line 158, in execute_robot_movement
+    except rtde_control.RTDECSocketException as e_sock:
+AttributeError: module 'rtde_control' has no attribute 'RTDECSocketException'
+2025-06-05 15:26:20,928 - werkzeug - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:20] "[35m[1mPOST /api/robot_command HTTP/1.1[0m" 500 -

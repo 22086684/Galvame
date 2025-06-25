@@ -1,0 +1,204 @@
+import time
+import logging
+
+# Probeer de juiste bibliotheken te importeren
+try:
+    import rtde_control
+    import rtde_receive
+    import rtde_io
+except ImportError:
+    pass # Prima als mock mode aan staat
+
+try:
+    import lgpio
+except ImportError:
+    lgpio = None
+
+# --- Configuratie UR Robot ---
+ROBOT_IP = "192.168.0.43"
+TOOL_SPEED = 0.25
+TOOL_ACCELERATION = 0.5
+
+# --- Configuratie Stappenmotor ---
+STEP_PIN = 17
+DIR_PIN = 27
+STAPPEN_VOOR_180_GRADEN = 1600
+VERTRAGING = 0.003
+GPIO_CHIP = 0
+
+# --- Configuratie Arduino Communicatie ---
+SIGNAAL_PIN = 26 # Output: signaal naar Arduino (STOP/HERVAT)
+RECEIVE_PIN = 16 # Input: signaal van Arduino (KLAAR)
+
+# --- Definities Robotposities (waypoints) ---
+startpos = [0.2472, 0.5000, 0.2171, 0, 0, 4.678]
+oppakpos = [0.2472, 0.6502, 0.2171, 0, 0, 4.678]
+oppakhoogte = [0.2472, 0.6502, 0.2276, 0, 0, 4.678] # Deze wordt niet direct gebruikt, maar kan handig zijn als referentie
+opgepakt = [0.2472, 0.6502, 0.4937, 0, 0, 4.678]
+approach = [0.5826 , 0.4074 , 0.5543 , 0 , 0, 4.716]
+
+# Er is geen 'piston_approach' meer in de nieuwe coördinaten,
+# de 'a' positie van elke rij lijkt die rol over te nemen.
+piston_posities = [
+    {'a': [0.6826, 0.7503, 0.5139, 1.578, 1.359, 4.087], 'b': [0.6826, 0.7881, 0.5139, 1.578, 1.359, 4.087], 'c': [0.6826, 0.7881, 0.5401, 1.578, 1.359, 4.087], 'd': [0.6826, 0.7503, 0.5401, 1.578, 1.359, 4.087]},
+    {'a': [0.6785, 0.7016, 0.4523, 1.579, 1.360, 4.087], 'b': [0.6785, 0.7394, 0.4523, 1.579, 1.360, 4.087], 'c': [0.6785, 0.7394, 0.4785, 1.579, 1.360, 4.087], 'd': [0.6785, 0.7016, 0.4785, 1.579, 1.360, 4.087]},
+    {'a': [0.6747, 0.6561, 0.3945, 1.579, 1.360, 4.087], 'b': [0.6747, 0.6939, 0.3945, 1.579, 1.360, 4.087], 'c': [0.6747, 0.6939, 0.4207, 1.579, 1.360, 4.087], 'd': [0.6747, 0.6561, 0.4207, 1.579, 1.360, 4.087]},
+    {'a': [0.6706, 0.6074, 0.3330, 1.579, 1.360, 4.087], 'b': [0.6706, 0.6452, 0.3330, 1.579, 1.360, 4.087], 'c': [0.6706, 0.6452, 0.3592, 1.579, 1.360, 4.087], 'd': [0.6706, 0.6074, 0.3592, 1.579, 1.360, 4.087]},
+    {'a': [0.6667, 0.5607, 0.2739, 1.579, 1.360, 4.087], 'b': [0.6667, 0.5985, 0.2739, 1.579, 1.360, 4.087], 'c': [0.6667, 0.5985, 0.3001, 1.579, 1.360, 4.087], 'd': [0.6667, 0.5607, 0.3001, 1.579, 1.360, 4.087]},
+]
+
+
+# --- Definities Payload ---
+payloads = {
+    'leeg': [1.470, [0.007, -0.009, 0.049]],
+    'rek': [3.130, [0.000, -0.028, 0.087]],
+    'p_05': [3.820, [-0.002, -0.007, 0.104]],
+    'p_10': [4.630, [-0.003, -0.001, 0.109]],
+    'p_15': [5.250, [-0.007, -0.008, 0.123]],
+    'p_20': [5.960, [-0.007, -0.019, 0.123]],
+    'p_25': [6.500, [-0.005, -0.038, 0.140]],
+    'p_25t' :[6.500, [0.001, -0.037, 0.115]],
+    'p_30' :[7.320, [0.003, -0.023, 0.113]],
+    'p_35' :[7.840, [-0.003, -0.019, 0.127]],
+    'p_40' :[8.410, [-0.001, -0.023, 0.112]],
+    'p_45' :[9.080, [-0.003, -0.027, 0.130]],
+    'p_50' :[9.780, [-0.006, -0.037, 0.160]]
+}
+payload_keys = ['p_05', 'p_10', 'p_15', 'p_20', 'p_25']
+
+Turn_1 = [-0.1288 , 0.7298 , 0.5066 , 0.041 , 0.042 , -1.554] 
+Turn_2 = [-0.1288 , 0.7298 , 0.3566 , 0.041 , 0.042 , -1.554] 
+Turn_3 = [-0.1288 , 0.7322 , 0.3427 , 0 , 0 , 4.729]
+Turn_4 = [-0.1288 , 0.5244 , 0.3427 , 0 , 0 , 4.729]
+Turn_5 = [-0.1246 , 0.6893 , 0.3427 , 0 , 0 , 4.729]
+Turn_6 = [-0.1246 , 0.6893 , 0.3663 , 0 , 0 , 4.729]
+Turn_7 = [-0.1246 , 0.6893 , 0.5148 , 0 , 0 , 4.729]
+
+
+
+
+
+# --- Logging Configuratie ---
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - MODE 2 (COMBI) - %(message)s', handlers=[logging.FileHandler("robot_errors.log")])
+
+# --- Communicatie Functies ---
+
+def stuur_arduino_signaal(h, pin, state):
+    """Stuur een signaal (HIGH/LOW) naar de Arduino."""
+    status = "STOP" if state else "HERVAT"
+    logging.info(f"Signaal naar Arduino sturen: {status} (Pin {pin} -> {'HIGH' if state else 'LOW'})")
+    lgpio.gpio_write(h, pin, 1 if state else 0)
+
+def wacht_op_arduino(h, pin):
+    """
+    Wacht oneindig op een HIGH signaal van de Arduino.
+    Deze functie blokkeert de uitvoering tot het signaal is ontvangen.
+    """
+    logging.info(f"Wachten op 'KLAAR' signaal van Arduino op pin {pin}...")
+    while True:
+        state = lgpio.gpio_read(h, pin)
+        if state == 1: # HIGH signaal ontvangen
+            logging.info("...Signaal 'KLAAR' ontvangen! Programma wordt hervat.")
+            return # Verlaat de functie en ga door met de rest van het programma
+        time.sleep(0.1) # Wacht 100ms om de CPU niet te overbelasten
+
+def draai_stappenmotor(h):
+    """Draait de stappenmotor en beheert Arduino signaal tijdens de draai."""
+    logging.info("--- Starten van stappenmotor-subroutine ---")
+    try:
+        stuur_arduino_signaal(h, SIGNAAL_PIN, True) # Pauzeer Arduino
+        lgpio.gpio_claim_output(h, DIR_PIN)
+        lgpio.gpio_claim_output(h, STEP_PIN)
+
+        logging.info("Stappenmotor draait 180 graden...")
+        lgpio.gpio_write(h, DIR_PIN, 0)
+        for _ in range(STAPPEN_VOOR_180_GRADEN):
+            lgpio.gpio_write(h, STEP_PIN, 1); time.sleep(VERTRAGING / 2)
+            lgpio.gpio_write(h, STEP_PIN, 0); time.sleep(VERTRAGING / 2)
+        logging.info("Stappenmotor heeft gedraaid.")
+
+    finally:
+        stuur_arduino_signaal(h, SIGNAAL_PIN, False) # Hervat Arduino
+        logging.info("--- Einde van stappenmotor-subroutine ---")
+
+def main():
+    logging.info("Mode 2 Gecombineerd Programma Gestart.")
+    rtde_c = None
+    rtde_r = None
+    rtde_io_inst = None
+    h = None # GPIO handle
+
+    try:
+        # --- Initialisatie ---
+        logging.info("Initialiseren van verbindingen en GPIO...")
+        rtde_c = rtde_control.RTDEControlInterface(ROBOT_IP)
+        rtde_r = rtde_receive.RTDEReceiveInterface(ROBOT_IP)
+        rtde_io_inst = rtde_io.RTDEIOInterface(ROBOT_IP)
+        h = lgpio.gpiochip_open(GPIO_CHIP)
+        lgpio.gpio_claim_output(h, SIGNAAL_PIN)
+        lgpio.gpio_claim_input(h, RECEIVE_PIN)
+        logging.info("Verbindingen en GPIO geïnitialiseerd.")
+
+        # --- Hoofd Cyclus ---
+        # 1. Pak het lege rek op
+        #stuur_arduino_signaal(h, SIGNAAL_PIN, True)#arduino mag door
+        rtde_c.setPayload(*payloads['leeg'])
+        rtde_c.moveJ(rtde_c.getInverseKinematics(startpos))
+        rtde_c.moveJ(rtde_c.getInverseKinematics(oppakpos))
+        rtde_io_inst.setStandardDigitalOut(1, True)
+        time.sleep(1)
+        rtde_c.moveJ(rtde_c.getInverseKinematics(oppakhoogte))
+        rtde_c.setPayload(*payloads['rek'])
+        rtde_c.moveJ(rtde_c.getInverseKinematics(opgepakt))
+        rtde_c.moveJ(rtde_c.getInverseKinematics(approach))
+        logging.info("Leeg rek opgepakt.")
+        
+        # 2. Vul het rek, rij voor rij
+        for i in range(1):
+            rij_nummer = i + 1
+            # Stuur stopsignaal naar Arduino en pak de pistons
+            stuur_arduino_signaal(h, SIGNAAL_PIN, False) # arduino stopt
+            pos = piston_posities[i]
+            # Beweeg naar de startpositie van de rij
+            rtde_c.moveJ(rtde_c.getInverseKinematics(pos['a']))
+            time.sleep(1)
+        
+        logging.info("Alle 5 rijen zijn gevuld. Rek is vol.")
+        # Ga terug naar een veilige positie voor de draai, bijvoorbeeld de startpositie van de laatste rij
+        #rtde_c.moveJ(rtde_c.getInverseKinematics(approach))
+        """
+        rtde_c.moveJ(rtde_c.getInverseKinematics(Turn_1))
+        rtde_c.moveJ(rtde_c.getInverseKinematics(Turn_2))
+        rtde_c.setPayload(*payloads['leeg'])  # Zorg dat de payload correct is ingesteld voor de draai
+        rtde_c.moveJ(rtde_c.getInverseKinematics(Turn_3))
+        rtde_io_inst.setStandardDigitalOut(1, False)  # Zet de digitale output uit
+        rtde_c.moveJ(rtde_c.getInverseKinematics(Turn_4))
+        draai_stappenmotor(h)
+        rtde_c.moveJ(rtde_c.getInverseKinematics(Turn_5))
+        rtde_io_inst.setStandardDigitalOut(1, True)  # Zet de digitale output uit
+        rtde_c.moveJ(rtde_c.getInverseKinematics(Turn_6))
+        rtde_c.setPayload(*payloads['p_5'])  # Zorg dat de payload correct is ingesteld voor de draai
+        rtde_c.moveJ(rtde_c.getInverseKinematics(Turn_7))
+        """
+
+        # 3. Draai het rek
+
+        # 4. Logica om andere kant te vullen (nog te implementeren)
+        logging.info("Andere kant van het rek vullen (logica nog te implementeren).")
+
+        logging.info("Mode 2 Gecombineerd Programma Voltooid.")
+
+    except Exception as e:
+        logging.error(f"Fout in de hoofdroutine van Mode 2: {e}", exc_info=True)
+        if h: stuur_arduino_signaal(h, SIGNAAL_PIN, True) # Stuur stopsignaal bij fout
+        
+    finally:
+        logging.info("Opruimen van verbindingen...")
+        if rtde_c and rtde_c.isConnected(): rtde_c.stopScript(); rtde_c.disconnect()
+        if rtde_r and rtde_r.isConnected(): rtde_r.disconnect()
+        if rtde_io_inst: rtde_io_inst.disconnect()
+        if h: lgpio.gpiochip_close(h)
+        logging.info("Alle verbindingen en GPIO zijn vrijgegeven.")
+
+if __name__ == "__main__":
+    main()

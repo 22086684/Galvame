@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Bedieningspaneel</title>
+    <style>
+        .mock-mode-banner { position: fixed; top: 0; left: 0; width: 100%; background-color: #ffc107; color: #333; text-align: center; padding: 5px 0; font-size: 14px; font-weight: bold; z-index: 2000; border-bottom: 2px solid #e0a800; }
+        body { font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background-color: #eef2f5; padding-top: 60px; }
+        .container { text-align: center; background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); width: 90%; max-width: 600px; }
+        h1 { color: #2c3e50; margin-bottom: 30px; }
+        .mode-buttons { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+        .mode-buttons button { background-color: #3498db; color: white; border: none; padding: 20px; border-radius: 8px; cursor: pointer; font-size: 18px; transition: background-color 0.3s ease, transform 0.1s ease; }
+        .mode-buttons button:hover { background-color: #2980b9; }
+        .mode-buttons .mode2 { background-color: #2ecc71; }
+        .mode-buttons .mode2:hover { background-color: #27ae60; }
+        .mode-buttons .mode3 { background-color: #f39c12; }
+        .mode-buttons .mode3:hover { background-color: #e67e22; }
+        .status-area { margin-top: 30px; padding: 15px; border: 1px solid #d1d8de; border-radius: 8px; background-color: #f8f9fa; min-height: 24px; display: flex; align-items: center; justify-content: center; }
+        .status-area p { margin: 0; color: #555; font-size: 15px; }
+        .status-area p.error { color: #c0392b; font-weight: bold; }
+        .status-area p.success { color: #27ae60; font-weight: bold; }
+        .fixed-action-button { position: fixed; bottom: 20px; right: 20px; background-color: #6c757d; color: white; padding: 12px 18px; border-radius: 5px; text-decoration: none; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 1000; }
+        .fixed-action-button:hover { background-color: #5a6268; }
+        .top-left-container { position: fixed; top: 45px; left: 20px; z-index: 1000; background-color: rgba(255, 255, 255, 0.9); padding: 10px 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .toggle-container { display: flex; align-items: center; }
+        .toggle-label { margin-right: 10px; font-size: 14px; font-weight: bold; color: #333; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; }
+        input:checked + .slider { background-color: #28a745; }
+        input:focus + .slider { box-shadow: 0 0 1px #28a745; }
+        input:checked + .slider:before { transform: translateX(22px); }
+        .slider.round { border-radius: 28px; }
+        .slider.round:before { border-radius: 50%; }
+    </style>
+</head>
+<body>
+    {% if mock_ur_robot or mock_stepper_motor %}
+        <div class="mock-mode-banner">
+            MOCK MODE ACTIEF:
+            {% if mock_ur_robot %} UR Robot & I/O {% endif %}
+            {% if mock_stepper_motor %} Stappenmotor {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="top-left-container">
+        <div class="toggle-container">
+            <span class="toggle-label">Digital Out 1</span>
+            <label class="switch">
+                <input type="checkbox" id="do1-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Selecteer een Modus</h1>
+        <div class="mode-buttons">
+            <button id="btn_mode1" data-mode="mode1" class="mode1">Mode 1</button>
+            <button id="btn_mode2" data-mode="mode2" class="mode2">Mode 2 (Robot & Motor Actie)</button>
+            <button id="btn_mode3" data-mode="mode3" class="mode3">Mode 3 (Leeg / Reserve)</button>
+        </div>
+        <div class="status-area">
+            <p id="statusText">Status: Wacht op selectie...</p>
+        </div>
+    </div>
+
+    <a href="{{ url_for('show_logs_page') }}" class="fixed-action-button" title="Bekijk Logs">&#128220; Logs</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusText = document.getElementById('statusText');
+            const do1Toggle = document.getElementById('do1-toggle');
+
+            async function runMode(mode) {
+                const modeName = mode.replace('_', ' ');
+                const displayModeName = modeName.charAt(0).toUpperCase() + modeName.slice(1);
+                statusText.textContent = `Bezig met starten van ${displayModeName}...`;
+                statusText.className = '';
+                try {
+                    const response = await fetch('/api/run_mode', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode: mode }) });
+                    const data = await response.json();
+                    if (!response.ok) {
+                        statusText.textContent = `Fout: ${data.message || 'Onbekende serverfout'}`;
+                        statusText.className = 'error';
+                    } else {
+                        statusText.textContent = `Status: ${data.message}`;
+                        statusText.className = 'success';
+                    }
+                } catch (error) {
+                    statusText.textContent = 'Fout: Kan geen verbinding maken met de server.';
+                    statusText.className = 'error';
+                }
+            }
+            document.querySelectorAll('.mode-buttons button').forEach(button => { button.addEventListener('click', () => { runMode(button.dataset.mode); }); });
+            
+            async function setDigitalOutput(pin, state) {
+                statusText.textContent = `Bezig met zetten van DO${pin} naar ${state ? 'AAN' : 'UIT'}...`;
+                statusText.className = '';
+                try {
+                    const response = await fetch('/api/digital_output/set', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pin: pin, state: state }) });
+                    const data = await response.json();
+                    if (!response.ok) { throw new Error(data.message || 'Serverfout'); }
+                    statusText.textContent = data.message;
+                    statusText.className = 'success';
+                } catch (error) {
+                    statusText.textContent = `Fout bij zetten DO${pin}: ${error.message}`;
+                    statusText.className = 'error';
+                    do1Toggle.checked = !state; 
+                }
+            }
+
+            async function getInitialStates() {
+                try {
+                    const response = await fetch('/api/digital_output/state');
+                    const data = await response.json();
+                    if (data.status === 'success') {
+                        const do1State = (data.outputs & (1 << 1)) !== 0;
+                        do1Toggle.checked = do1State;
+                    } else {
+                        statusText.textContent = 'Kon status van I/O niet ophalen.';
+                        statusText.className = 'error';
+                    }
+                } catch (error) { console.error('Fout bij ophalen initiële output status:', error); }
+            }
+
+            do1Toggle.addEventListener('change', (event) => { setDigitalOutput(1, event.target.checked); });
+            getInitialStates();
+        });
+    </script>
+</body>
+</html>

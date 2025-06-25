@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0; margin: 0; }
+        .login-container { background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+        h2 { margin-bottom: 20px; color: #333; }
+        input[type="password"] { padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 22px); font-size: 16px;}
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        .error { color: red; margin-bottom: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Voer wachtwoord in</h2>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <input type="password" name="password" required autofocus>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
